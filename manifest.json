@@ -1,0 +1,27 @@
+{
+  "name": "Directorio",
+  "version": "1.0.0",
+  "icons": { "48": "img/ext/icon-48.png",
+            "128": "img/ext/icon-128.png" },
+  "description": "Contactos Corporativos ",
+  
+  "browser_action": {
+    "default_title": "Buscador",
+    "default_icon": "img/ext/icon-19-off.png",
+    "default_popup": "main.html"
+
+  },
+   "content_security_policy": "script-src 'self' https://script.google.com  https://script.googleusercontent.com; object-src 'self'",
+  "permissions": [
+  "http://*/*", 
+    "https://*/*", 
+    "tabs",
+    "http://www.google.com/m8/feeds/*",
+    "https://www.google.com/accounts/OAuthGetRequestToken",
+    "https://www.google.com/accounts/OAuthAuthorizeToken",
+    "https://www.google.com/accounts/OAuthGetAccessToken",
+    "https://script.google.com/macros/s/AKfycbzZc91W2O_eHWOkhIJPt-wVX5N_lENnCYQ8HB9IAnBVh_4eWA/*",
+    "https://script.googleusercontent.com/a/macros/rapazz.cl/*"
+  ],
+  "manifest_version": 2
+}

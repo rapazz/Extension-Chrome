@@ -1,0 +1,36 @@
+#heading {
+  display: block;
+  width: 100%;
+  height: 150px;
+  padding: 20px 0;
+  background: url('../img/logo_mineria.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  -webkit-box-shadow: inset 0 -4px 9px -3px #000;
+  -moz-box-shadow: inset 0 -4px 9px -3px #000;
+  box-shadow: inset 0 -4px 9px -3px #000;
+}
+#heading h1, #heading h2, #heading h3, #heading h4, #heading h5, #heading p {
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6), 0 0 30px rgba(0,0,0,0.25);
+}
+
+#heading h1 {
+  font-size: 90px;
+  line-height: 105px;
+  letter-spacing: -1px;
+  color: #fff;
+}
+#heading h2 {
+  font-size: 50px;
+  line-height: 105px;
+  letter-spacing: -2px;
+  color: #fff;
+}
+#heading h4 {
+  font-size: 30px;
+  line-height: 40px;
+  color: #fff;
+  margin-bottom: 25px;
+}
