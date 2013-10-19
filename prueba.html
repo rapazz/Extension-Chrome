@@ -1,0 +1,53 @@
+<html>
+<head>
+
+<title>Test for IndexedDB Autosuggest</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="css/global.css" rel="stylesheet" media="screen">
+   <link href="css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" media="screen">
+  
+
+  </head>
+   <body>
+      <script src="js/variables.js"></script>
+       <script src="js/funciones.js"></script>
+            <script src="js/almacen.js"></script>
+      <script src="js/jquery.js"></script>
+      <script src="js/miDirectorio.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+
+<script>
+
+
+$(document).ready(function() {
+	
+ //Create the autocomplete
+  $("#name").autocomplete({
+    source:  function(request, response) {rapazz.miDirectorio.Autocompletar(request, response)} ,
+    minLength: 2,
+    select: function(event, ui) {
+      $("#displayEmployee").show().html(ui.item.person);
+    }
+
+
+	});
+
+});
+
+
+</script>
+
+
+
+<form>
+	<p>
+	 <input id="name" autocomplete="true">
+	</p>
+  
+</form>
+
+<div id="displayEmployee">jhjkhkjh</div>
+
+</body>
+</html>

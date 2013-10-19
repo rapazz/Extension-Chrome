@@ -16,7 +16,7 @@ function getContacts () {
 
 var objcontactos=[]
  $.ajax({
-    url:"https://script.google.com/a/macros/kcl.cl/s/AKfycby5jcOhLwcKrSnf3m9I_I3GWTgpwY6vJoq-vJ0AWVvuqK_nfRD4/exec?filtro="+$('#txtBuscar').val() + "&metodo=Nombre" ,
+    url: constantes.servicioGoogle +"?filtro="+$('#txtBuscar').val() + "&metodo=Nombre" ,
     type:'GET',
     dataType:'JSONP',
     jsonpCallback:'jsonp',
@@ -121,4 +121,48 @@ function replaceAll( text, busca, reemplaza ){
 4
   return text;
 5
+}
+
+
+function datediff(fromDate,toDate,interval) { 
+                /*
+                 * DateFormat month/day/year hh:mm:ss
+                 * ex.
+                 * datediff('01/01/2011 12:00:00','01/01/2011 13:30:00','seconds');
+                 */
+                var second=1000, minute=second*60, hour=minute*60, day=hour*24, week=day*7; 
+                fromDate = new Date(fromDate); 
+                toDate = new Date(toDate); 
+                var timediff = toDate - fromDate; 
+                if (isNaN(timediff)) return NaN; 
+                switch (interval) { 
+                    case "years": return toDate.getFullYear() - fromDate.getFullYear(); 
+                    case "months": return ( 
+                        ( toDate.getFullYear() * 12 + toDate.getMonth() ) 
+                        - 
+                        ( fromDate.getFullYear() * 12 + fromDate.getMonth() ) 
+                    ); 
+                    case "weeks"  : return Math.floor(timediff / week); 
+                    case "days"   : return Math.floor(timediff / day);  
+                    case "hours"  : return Math.floor(timediff / hour);  
+                    case "minutes": return Math.floor(timediff / minute); 
+                    case "seconds": return Math.floor(timediff / second); 
+                    default: return undefined; 
+                } 
+            }
+            
+function obtenerfecha(){
+ var dateStr ="";
+ dateObj = new Date();
+var dd = dateObj.getDate();
+  var mm = dateObj.getMonth()+1; //January is 0!
+  var yyyy = dateObj.getFullYear();
+
+  if(dd<10){dd='0'+dd}; 
+  if(mm<10){mm='0'+mm};
+  dateStr = ''+yyyy+mm+dd;
+  dateStr = ''+ mm +  '/' +dd+'/' + yyyy;
+  
+  return dateStr
+  
 }
