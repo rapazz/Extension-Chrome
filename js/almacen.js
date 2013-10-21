@@ -1,5 +1,5 @@
 
- 
+ // archivo
 //Definicion del Espacio de nombres
 //var rapazz = {};
 window.indexedDB = window.indexedDB || window.webkitIndexedDB ||
