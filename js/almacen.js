@@ -96,11 +96,14 @@ rapazz.indexedDB.deleteAll = function() {
 
   request.onsuccess = function(e) {
   console.log("Todos los registros borrados: ", e);
+return true  
   };
 
   request.onerror = function(e) {
     console.log("Error Agregando: ", e);
+    return true 
   };
+  return false 
 };
 
 rapazz.indexedDB.autoCompletar =  function(request, response) {

@@ -16,12 +16,15 @@ var blnBuscar =false
 
   if (datediff(localStorage["ultimoRegistro"],new Date(),'days') > 2)
  {
- 	localStorage["ultimoRegistro"]= +new Date;
+ 	localStorage["ultimoRegistro"]= obtenerfecha()
  	blnBuscar=true
 
  } 	
  if (blnBuscar){
+
  	rapazz.indexedDB.deleteAll()
+
+  continuar =true 
 var objDirectorio=[]
  $.ajax({
     url:constantes.servicioGoogle ,
@@ -33,7 +36,34 @@ var objDirectorio=[]
 for (var x=0;x<objDirectorio.length;x++){
 	rapazz.indexedDB.addContacto(objDirectorio[x])
 }
+
+var opt = {
+  type: "basic",
+  title: "Primary Title",
+  message: "Primary message to display",
+  iconUrl: "url_to_small_icon"
+}
+//chrome.notifications.create('id1', opt);
 //Pendiente crear Notificacion informando cambio
+  var havePermission = window.webkitNotifications.checkPermission();
+  if (havePermission == 0) {
+    // 0 is PERMISSION_ALLOWED
+    var notification = window.webkitNotifications.createNotification(
+      'http://i.stack.imgur.com/dmHl0.png',
+      'Chrome notification!',
+    'Here is the notification text'
+    );
+    
+    notification.onclick = function () {
+      window.open("http://www.terra.cl");
+      notification.close();
+    }
+    notification.show();
+  } else {
+      window.webkitNotifications.requestPermission();
+  }
+
+
 }
 })
 

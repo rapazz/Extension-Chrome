@@ -1,10 +1,9 @@
 jQuery(document).ready(function () { 
+  var havePermission = window.webkitNotifications.checkPermission();
+if (havePermission !=0)
+	window.webkitNotifications.requestPermission();
+
   
-  $( "#btnBuscar" ).bind( "click", function() {
- //cargaBusqueda()
- getContacts()
- 
-});
 
 
 //Create the autocomplete
