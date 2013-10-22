@@ -1,8 +1,8 @@
 jQuery(document).ready(function () { 
-  var havePermission = window.webkitNotifications.checkPermission();
+ /* var havePermission = window.webkitNotifications.checkPermission();
 if (havePermission !=0)
 	window.webkitNotifications.requestPermission();
-
+*/
   
 
 

@@ -1,51 +1,3 @@
-function cargaBusqueda(){
-var tds
-tds = '<tr><td>Nombre</td><td>Organizacion</td><td>Correo</td><td>anexo</td><td>opciones</td></tr>'
- for (var i = 0; i<=3; i++) 
-	tds += '<tr><td>Moisés Bravo</td><td>KCC</td><td>moises.bravo@kcl.cl</td><td>58330</td><td><a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">Ver</a></td></tr>'
- 
-$("#tblResultados").append(tds); 
-
-}
-
-
-
-
-
-function getContacts () {
-
-var objcontactos=[]
- $.ajax({
-    url: constantes.servicioGoogle +"?filtro="+$('#txtBuscar').val() + "&metodo=Nombre" ,
-    type:'GET',
-    dataType:'JSONP',
-    jsonpCallback:'jsonp',
-    success: function(data){
-     var  objcontactos= data;
-       var tds
-        $("#tblResultados tr").remove();
-tds = '<tr><td>Nombre</td><td>Organizacion</td><td>Correo</td><td>anexo</td><td>opciones</td></tr>'
-for (var x=0;x<objcontactos.length;x++){
-  tds += '<tr><td>' + objcontactos[x].nombre + '</td><td>' + objcontactos[x].compania +'</td><td>' + objcontactos[x].email.split('.test')[0] + '</td><td>' +objcontactos[x].anexo.split('ext.')[1] +'</td><td><button type="button" onclick="alert(1)" class="btn btn-info" id="btnVer~'+ x + '">Ver</button> <button type="submit" class="btn btn-info" id="btnllamar~'+ x + '">llamar</button></td></tr>'
- $("#tblResultados").append(tds); 
-document.getElementById ('btnllamar~'+ x).miAnexo= objcontactos[x].anexo.split('ext.')[1]
-document.getElementById ('btnllamar~'+ x).addEventListener("click",  function(){
-  cargarPopup(this.miAnexo)
-
-},false);
-document.getElementById ('btnVer~'+ x).miEmail=objcontactos[x].email.split('.test')[0] 
-document.getElementById ('btnVer~'+ x).addEventListener("click",  function(){cargaFichaUsuario(this.miEmail)},false);
-
-}
-}
-
-  
-});
-
-
-   }
-
-
 
 function cargaFichaUsuario(correo) {
 
@@ -78,14 +30,11 @@ var objcontactos=[]
       cuerpo +=  '</div></div>' 
 
       $("#fichaUsuario").append(cuerpo);  
-                            }
-
-
-  
+                            } 
 });
+}
 
 
-   }
 
 
    function obtener(){
@@ -99,28 +48,19 @@ $( "#fichaUsuario" ).load( "url", function() {
    
 function cargarPopup(anexo){
 var props = {
-    url: "https://10.201.123.4:8443/webdialer/Webdialer?destination=" + anexo,
+    url: constantes.servicioWebdialer + anexo,
     height: 200,
     width: 300,
     type: "popup"
 }
 
-chrome.windows.create(props, function(windowObj){
-    console.log("Here's the window object.");
-    console.dir(windowObj);
-});
 
-}
 
 
 function replaceAll( text, busca, reemplaza ){
-2
   while (text.toString().indexOf(busca) != -1)
-3
       text = text.toString().replace(busca,reemplaza);
-4
   return text;
-5
 }
 
 

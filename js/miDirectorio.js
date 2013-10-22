@@ -39,13 +39,13 @@ for (var x=0;x<objDirectorio.length;x++){
 
 var opt = {
   type: "basic",
-  title: "Primary Title",
-  message: "Primary message to display",
-  iconUrl: "url_to_small_icon"
+  title: "Directorio Komatsu Cummins",
+  message: "Se han Actualizado " + x + "registros",
+  iconUrl: "http://i.stack.imgur.com/dmHl0.png"
 }
-//chrome.notifications.create('id1', opt);
+chrome.notifications.create('id1', opt,function() {});
 //Pendiente crear Notificacion informando cambio
-  var havePermission = window.webkitNotifications.checkPermission();
+ /* var havePermission = window.webkitNotifications.checkPermission();
   if (havePermission == 0) {
     // 0 is PERMISSION_ALLOWED
     var notification = window.webkitNotifications.createNotification(
@@ -63,7 +63,7 @@ var opt = {
       window.webkitNotifications.requestPermission();
   }
 
-
+*/
 }
 })
 

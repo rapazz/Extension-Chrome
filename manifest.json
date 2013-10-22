@@ -13,6 +13,7 @@
   },
    "content_security_policy": "script-src 'self' https://script.google.com  https://script.googleusercontent.com; object-src 'self'",
   "permissions": [
+  "notifications",
   "http://*/*", 
     "https://*/*", 
     "tabs",

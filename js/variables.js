@@ -11,7 +11,7 @@ var rapazz ={}
 //Llamada servicio Google
 var constantes = {}
  constantes.servicioGoogle = "https://script.google.com/macros/s/AKfycbxcxXIwuzW8OlN3ZBD7hxKRicstyx-XCCNTfJ-ftJgcZj0u0sA/exec"
-
+constantes.servicioWebdialer = 'https://10.201.123.4:8443/webdialer/Webdialer?destination='
 //constantes de la base de datos
  constantes.BD = {}
  constantes.BD.Nombre = 'DirectorioKcl'
