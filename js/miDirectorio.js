@@ -50,12 +50,12 @@ var opt = {
     // 0 is PERMISSION_ALLOWED
     var notification = window.webkitNotifications.createNotification(
       'http://i.stack.imgur.com/dmHl0.png',
-      'Chrome notification!',
-    'Here is the notification text'
+      'Notificaciones Directorio',
+    'Registros Actualizados'
     );
     
     notification.onclick = function () {
-      window.open("http://www.terra.cl");
+      //window.open("http://www.terra.cl");
       notification.close();
     }
     notification.show();

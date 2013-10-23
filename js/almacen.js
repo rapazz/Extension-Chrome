@@ -123,7 +123,7 @@ rapazz.indexedDB.autoCompletar =  function(request, response) {
       var objectStore = transaction.objectStore(constantes.BD.nombreTabla);
 
       // Credit: http://stackoverflow.com/a/8961462/52160
-      var range = IDBKeyRange.bound(request.term, request.term + "z");
+      var range = IDBKeyRange.bound(request.term.toUpperCase(), request.term.toUpperCase() + "z");
       var index = objectStore.index(constantes.BD.indice);
 
       index.openCursor(range).onsuccess = function(event) {
