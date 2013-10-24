@@ -17,7 +17,7 @@ rapazz.indexedDB.onerror = function(e) {
 
 //Intenta abrir la base de datos en caso contrario la crea
 rapazz.indexedDB.open = function() {
-	 var v = 10;
+	 var v = 14;
   var request = indexedDB.open( constantes.BD.Nombre,v);  //de manera asincrona
 
   request.onsuccess = function(e) {
@@ -59,7 +59,10 @@ rapazz.miDirectorio.obtenerInformacion();
 									db.deleteObjectStore(constantes.BD.nombreTabla)
                                 	var tablaDatos = db.createObjectStore(constantes.BD.nombreTabla, {keyPath: 'email', autoIncrement: false});
 tablaDatos.createIndex("email", "email", { unique: false });
-tablaDatos.createIndex("nombreCompleto", "nombreCompleto", { unique: false });
+//tablaDatos.createIndex("nombre", "nombre", { unique: false });
+//tablaDatos.createIndex("apellido", "apellido", { unique: false });
+
+tablaDatos.createIndex(constantes.BD.indice, "nombreApellido", { unique: false, multiEntry : true });
 
                    
                         };
@@ -74,7 +77,8 @@ rapazz.indexedDB.addContacto = function(jsoncontacto) {
 
   
     jsoncontacto.timeStamp= new Date().getTime()
- 
+ jsoncontacto.nombreApellido = []
+jsoncontacto.nombreApellido=[jsoncontacto.nombre,jsoncontacto.apellido]
 
   var request = store.put(jsoncontacto);
 
@@ -124,7 +128,8 @@ rapazz.indexedDB.autoCompletar =  function(request, response) {
 
       // Credit: http://stackoverflow.com/a/8961462/52160
       var range = IDBKeyRange.bound(request.term.toUpperCase(), request.term.toUpperCase() + "z");
-      var index = objectStore.index(constantes.BD.indice);
+      //var index = objectStore.index(constantes.BD.indice);
+var index = objectStore.index(constantes.BD.indice);
 
       index.openCursor(range).onsuccess = function(event) {
         var cursor = event.target.result;

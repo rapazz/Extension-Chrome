@@ -3,7 +3,14 @@ jQuery(document).ready(function () {
 if (havePermission !=0)
 	window.webkitNotifications.requestPermission();
 */
-  
+  $( "#btnBuscar" ).bind( "click", function() {
+//cargaBusqueda()
+var cadena = {}
+cadena.term = $('#txtBuscar').val()
+ rapazz.miDirectorio.Autocompletar(cadena,function(valor){rapazz.miDirectorio.listarRegistros(valor)})
+ 
+});
+
 
 
 //Create the autocomplete
@@ -12,9 +19,11 @@ if (havePermission !=0)
     minLength: 2,
     select: function(event, ui) {
 
+var arreglo = []
 
-  //  	ui.item.person.nombreCompleto)
-     rapazz.miDirectorio.listarRegistros(event,ui.item.person)
+arreglo.push(ui.item)
+
+     rapazz.miDirectorio.listarRegistros(arreglo)
     }
 
 

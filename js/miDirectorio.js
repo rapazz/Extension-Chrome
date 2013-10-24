@@ -74,22 +74,28 @@ rapazz.miDirectorio.Autocompletar =function (request, response)
 		rapazz.indexedDB.autoCompletar(request,response)
     }
 
-rapazz.miDirectorio.listarRegistros = function(event, ui)  
+
+
+rapazz.miDirectorio.listarRegistros = function(ui)  
 {
-  var x =0
+
+
+  
+
  var tds=  '' 
         $("#tblResultados tr").remove();
 tds = '<tr><td>Nombre</td><td>Organizacion</td><td>Correo</td><td>anexo</td><td>opciones</td></tr>'
-  tds += '<tr><td>' + ui.nombreCompleto + '</td><td>' + ui.compania +'</td><td>' + ui.email.split('.test')[0] + '</td><td>' +ui.anexo.split('ext.')[1] +'</td><td><button type="button" onclick="alert(1)" class="btn btn-info" id="btnVer~'+ x + '">Ver</button> <button type="submit" class="btn btn-info" id="btnllamar~'+ x + '">llamar</button></td></tr>'
+ for (var x=0;x<ui.length;x++){ 
+  tds += '<tr><td>' + ui[x].person.nombreCompleto + '</td><td>' + ui[x].person.compania +'</td><td>' + ui[x].person.email.split('.test')[0] + '</td><td>' +ui[x].person.anexo.split('ext.')[1] +'</td><td><button type="button" onclick="alert(1)" class="btn btn-info" id="btnVer~'+ x + '">Ver</button> <button type="submit" class="btn btn-info" id="btnllamar~'+ x + '">llamar</button></td></tr>'
 $("#tblResultados").append(tds); 
-document.getElementById ('btnllamar~'+ x).miAnexo= ui.anexo.split('ext.')[1]
+document.getElementById ('btnllamar~'+ x).miAnexo= ui[x].person.anexo.split('ext.')[1]
 document.getElementById ('btnllamar~'+ x).addEventListener("click",  function(){
   cargarPopup(this.miAnexo)
 
 },false);
-document.getElementById ('btnVer~'+ x).miEmail=ui.email.split('.test')[0] 
+document.getElementById ('btnVer~'+ x).miEmail=ui[x].person.email.split('.test')[0] 
 document.getElementById ('btnVer~'+ x).addEventListener("click",  function(){cargaFichaUsuario(this.miEmail)},false);
-
+}
 }
  
 

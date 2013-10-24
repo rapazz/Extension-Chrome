@@ -51,7 +51,13 @@ var props = {
     url: constantes.servicioWebdialer + anexo,
     height: 200,
     width: 300,
-    type: "popup"
+    type: "popup"}
+
+chrome.windows.create(props, function(windowObj){
+    console.log("Here's the window object.");
+    console.dir(windowObj);
+});
+
 }
 
 

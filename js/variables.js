@@ -16,5 +16,5 @@ constantes.servicioWebdialer = 'https://10.201.123.4:8443/webdialer/Webdialer?de
  constantes.BD = {}
  constantes.BD.Nombre = 'DirectorioKcl'
  constantes.BD.nombreTabla = 'Contactos'
- constantes.BD.indice = 'nombreCompleto'
+ constantes.BD.indice = 'nombreApellido'
 
