@@ -1,13 +1,13 @@
 {
   "name": "Directorio",
   "version": "1.0.0",
-  "icons": { "48": "img/ext/icon-48.png",
-            "128": "img/ext/icon-128.png" },
+  "icons": { "48": "img/gocontactsex-48.png",
+            "128": "img/gocontactsex-128.png" },
   "description": "Contactos Corporativos ",
   
   "browser_action": {
     "default_title": "Buscador",
-    "default_icon": "img/ext/icon-19-off.png",
+    "default_icon": "img/gocontactsex-48.png",
     "default_popup": "main.html"
 
   },

@@ -91,6 +91,7 @@ jsoncontacto.nombreApellido=[jsoncontacto.nombre,jsoncontacto.apellido]
   };
 };
 
+
 rapazz.indexedDB.deleteAll = function() {
   var db = rapazz.indexedDB.db;
   var trans = db.transaction([constantes.BD.nombreTabla], "readwrite");
