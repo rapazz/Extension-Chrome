@@ -34,8 +34,13 @@ var objDirectorio=[]
     success: function(data){
      var  objDirectorio= data;
 for (var x=0;x<objDirectorio.length;x++){
-	rapazz.indexedDB.addContacto(objDirectorio[x])
+     objDirectorio[x].timeStamp= new Date().getTime()
+ objDirectorio[x].nombreApellido = []
+objDirectorio[x].nombreApellido=[objDirectorio[x].nombre,objDirectorio[x].apellido]
+
 }
+
+  rapazz.indexedDB.addAllContactos(objDirectorio)
 
 var opt = {
   type: "basic",

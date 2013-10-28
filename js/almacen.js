@@ -70,6 +70,32 @@ tablaDatos.createIndex(constantes.BD.indice, "nombreApellido", { unique: false, 
   request.onerror = rapazz.indexedDB.onerror;
 };
 
+
+rapazz.indexedDB.addAllContactos = function (jsoncontacto) {
+var db = rapazz.indexedDB.db;
+  var trans = db.transaction([constantes.BD.nombreTabla], "readwrite");
+  var store = trans.objectStore(constantes.BD.nombreTabla);
+var i=0;
+  
+ 
+ rapazz.indexedDB.addSiguiente(store,i,jsoncontacto)
+}
+
+
+
+
+rapazz.indexedDB.addSiguiente= function(store,i,json){
+
+ if (i < 10){
+console.log("Registro Insertado: ", i);
+++i;
+store.put(json[i]).onsuccess=rapazz.indexedDB.addSiguiente(store,i,json)
+
+
+ }
+
+
+}
 rapazz.indexedDB.addContacto = function(jsoncontacto) {
   var db = rapazz.indexedDB.db;
   var trans = db.transaction([constantes.BD.nombreTabla], "readwrite");
