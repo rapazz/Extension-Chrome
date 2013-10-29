@@ -15,13 +15,10 @@ var blnBuscar =false
   }
 
   if (datediff(localStorage["ultimoRegistro"],new Date(),'days') > constantes.diasActualizar)
- {
- 	localStorage["ultimoRegistro"]= obtenerfecha()
  	blnBuscar=true
 
- } 	
  if (blnBuscar){
-
+registrosActualizados=false 
  	rapazz.indexedDB.deleteAll()
 
   continuar =true 
@@ -40,47 +37,19 @@ objDirectorio[x].nombreApellido=[objDirectorio[x].nombre,objDirectorio[x].apelli
 
 }
 
-  rapazz.indexedDB.addAllContactos(objDirectorio)
-
+rapazz.indexedDB.addAllContactos(objDirectorio)
+if (registrosActualizados){
+  localStorage["ultimoRegistro"]= obtenerfecha()
 var opt = {
   type: "basic",
   title: "Directorio Komatsu Cummins",
-  message: "Se han Actualizado " + x + "registros",
-  iconUrl: "http://i.stack.imgur.com/dmHl0.png"
+  message: "Directorio Actualizado, se dispone de " + x + " registros",
+  iconUrl: ""
 }
 chrome.notifications.clear('id1',function() {})
 chrome.notifications.create('id1', opt,function() {});
-//Pendiente crear Notificacion informando cambio
- /* var havePermission = window.webkitNotifications.checkPermission();
-  if (havePermission == 0) {
-    // 0 is PERMISSION_ALLOWED
-    var notification = window.webkitNotifications.createNotification(
-      'http://i.stack.imgur.com/dmHl0.png',
-      'Notificaciones Directorio',
-    'Registros Actualizados'
-    );
-    
-    notification.onclick = function () {
-      //window.open("http://www.terra.cl");
-      notification.close();
-    }
-    notification.show();
-  } else {
-      window.webkitNotifications.requestPermission();
-  }
-
-*/
-},
-complete: function(event){
-
-  var opt = {
-  type: "basic",
-  title: "Directorio Komatsu Cummins",
-  message: "Registros Actualizados",
-  iconUrl: "http://i.stack.imgur.com/dmHl0.png"
 }
-chrome.notifications.update('id2', opt,function() {});
-} 
+}
 })
 
 }

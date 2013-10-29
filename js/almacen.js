@@ -86,14 +86,18 @@ var i=0;
 
 rapazz.indexedDB.addSiguiente= function(store,i,json){
 
- if (i < 10){
+ if (i < json.length){
 console.log("Registro Insertado: ", i);
 ++i;
-store.put(json[i]).onsuccess=rapazz.indexedDB.addSiguiente(store,i,json)
-
+request = store.put(json[i-1])
+request.onsuccess=rapazz.indexedDB.addSiguiente(store,i,json)
+request.onerror = function (e){
+  console.log('Registro con Problemas ' , e)
+}
 
  }
-
+else 
+  registrosActualizados=true 
 
 }
 rapazz.indexedDB.addContacto = function(jsoncontacto) {

@@ -21,3 +21,4 @@ constantes.diasActualizar = 1
  constantes.BD.nombreTabla = 'Contactos'
  constantes.BD.indice = 'nombreApellido'
 
+var registrosActualizados = false
