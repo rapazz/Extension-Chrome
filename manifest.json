@@ -6,7 +6,7 @@
   "description": "Contactos Corporativos ",
    "background": {
         "scripts": [
-            "background.js"
+            "js/funciones.js","js/variables.js","js/jquery.js","js/miDirectorio.js","js/almacen.js","background.js"
         ]},
   "browser_action": {
     "default_title": "Buscador",

@@ -17,7 +17,7 @@ rapazz.indexedDB.onerror = function(e) {
 
 //Intenta abrir la base de datos en caso contrario la crea
 rapazz.indexedDB.open = function() {
-	 var v = 14;
+	 var v =  constantes.version ;
   var request = indexedDB.open( constantes.BD.Nombre,v);  //de manera asincrona
 
   request.onsuccess = function(e) {
@@ -25,7 +25,7 @@ rapazz.indexedDB.open = function() {
     rapazz.indexedDB.db = e.target.result;
     var db = rapazz.indexedDB.db;
     // Pobla Base de datos 
-rapazz.miDirectorio.obtenerInformacion();  
+ 
 
 
        // START chrome (obsolete - will be removed)
@@ -63,7 +63,8 @@ tablaDatos.createIndex("email", "email", { unique: false });
 //tablaDatos.createIndex("apellido", "apellido", { unique: false });
 
 tablaDatos.createIndex(constantes.BD.indice, "nombreApellido", { unique: false, multiEntry : true });
-
+ localStorage["ultimoRegistro"]=""
+rapazz.miDirectorio.obtenerInformacion(); 
                    
                         };
 
@@ -72,6 +73,7 @@ tablaDatos.createIndex(constantes.BD.indice, "nombreApellido", { unique: false, 
 
 
 rapazz.indexedDB.addAllContactos = function (jsoncontacto) {
+
 var db = rapazz.indexedDB.db;
   var trans = db.transaction([constantes.BD.nombreTabla], "readwrite");
   var store = trans.objectStore(constantes.BD.nombreTabla);
@@ -123,6 +125,11 @@ jsoncontacto.nombreApellido=[jsoncontacto.nombre,jsoncontacto.apellido]
 
 
 rapazz.indexedDB.deleteAll = function() {
+   var v =  constantes.version ;
+  var req = indexedDB.open( constantes.BD.Nombre,v);  //de manera asincrona
+
+  req.onsuccess = function(e) {
+      rapazz.indexedDB.db = e.target.result;
   var db = rapazz.indexedDB.db;
   var trans = db.transaction([constantes.BD.nombreTabla], "readwrite");
   var store = trans.objectStore(constantes.BD.nombreTabla);
@@ -140,12 +147,17 @@ return true
   };
   return false 
 };
+};
 
 rapazz.indexedDB.autoCompletar =  function(request, response) {
 
-      console.log("Going to look for "+request.term);
+      console.log("Buscando "+request.term);
 
-    
+    var v =  constantes.version ;
+  var req = indexedDB.open( constantes.BD.Nombre,v);  //de manera asincrona
+
+  req.onsuccess = function(e) {
+      rapazz.indexedDB.db = e.target.result;
  var db = rapazz.indexedDB.db;
       var transaction = db.transaction([constantes.BD.nombreTabla], "readonly");
       var result = [];
@@ -157,7 +169,7 @@ rapazz.indexedDB.autoCompletar =  function(request, response) {
       // TODO: Handle the error and return to it jQuery UI
       var objectStore = transaction.objectStore(constantes.BD.nombreTabla);
 
-      // Credit: http://stackoverflow.com/a/8961462/52160
+      // Credit: http://stackoverflow.com/a/896 constantes.version 62/52160
       var range = IDBKeyRange.bound(request.term.toUpperCase(), request.term.toUpperCase() + "z");
       //var index = objectStore.index(constantes.BD.indice);
 var index = objectStore.index(constantes.BD.indice);
@@ -173,5 +185,4 @@ var index = objectStore.index(constantes.BD.indice);
         }
       };
     }
- 
-window.addEventListener("DOMContentLoaded", rapazz.indexedDB.open(), false)
+ }

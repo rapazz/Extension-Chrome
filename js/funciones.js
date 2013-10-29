@@ -1,7 +1,7 @@
 
 function cargaFichaUsuario(correo) {
 
-$('#myModal').modal({show:true})
+ 
 var objcontactos=[]
  $.ajax({
     url:"https://script.google.com/a/macros/kcl.cl/s/AKfycby5jcOhLwcKrSnf3m9I_I3GWTgpwY6vJoq-vJ0AWVvuqK_nfRD4/exec?filtro="+correo + "&metodo=getUser" ,
@@ -10,7 +10,7 @@ var objcontactos=[]
     jsonpCallback:'jsonp',
     success: function(data){
        objcontactos= data;
-
+      
        var cuerpo='<div class="media"><a class="pull-left" href="#">'
  
 //cuerpo += '<img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQIAAABQCAIAAAB9HOxPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN/SURBVHhe7ZvhccIwDEaZoBP0J8Oweqdggs6QllJaek0gsiRLsh/Hj95hy/bn95r4CIeFFwlMn8Bh+gQIgAQWNAACEkADGCCBBQ2AgATQAAZI4DMBzgZgQAJoAAMkwNUABkiAmyIYIIFLApwN4IAE0AAGJkjg/fX4815dLleDCSiYdYn39D82AQ1mZWTQdW+hjwaDbjjLuiWwB31uiuBlwARE6HM2GJCAaZfUhv7pdDqfz49D42wwLVQ1Ft6G/rXX/hWiwf6saNkpgT7o3y8GDTptLcM8TqA/+mgAkykSiEUfDVJAMOck8qCPBnMSGLbqnOijQRgQ8wycH300mIfGriuthT4adIVj7MHqoo8GY5Ppvrox0EcDd1DGG2A89NFgPEpdVtSMvstsPIvyLbJnugVrN6P/8xiP6GGeJAmhQZKNiJyGHv3I2VuMjQYWKRasAfqcDQpiazFl0N9KkauBBV+5a2joz70ys9mhgVmUqQqBvmg70EAUV+rGoN+8PWjQHF2KjqBvsg1oYBJj1yKgbx43GphH6lIQ9F1ivRVFA9d4VcVBXxWfpDMaSNLybwv6/hmvjIAGIbH/GRT0w/cADWK2APRjct8YFQ36bQfo98taOBIaCAMTNgd9YWAxzdHAPnfQt8/UuSIa2AQM+jY5BlVBg/bgVei/vSxf74q/1WqPLGtPNJDtjAn6VwG+37Lxae2SABo8j9UefTR4nnrXFmiwHrcG/ct9zj3oj//uut0Mtp4AGvzm0g99rgbJfJxdgxj00QANwhOIRx8NwiH4O4GJrgYa+gX3+vtPBdeWvBIkMLgGSdHnapAA/fspDKhBAfTRAA08EiiGPhp4QKCoWfhqUBh9NFAg69G1mAaDoI8GHiwrahbQYED00UCBrEfXpBoMjj4aeLCsqJlIg4nQRwMFsh5dgzWYFH008GBZUTNAA9Dn9wYKYl26dtIA9Dcfx3DZVorKEnDUAPR3PYkk2y9auyRgrAHo70Kfs4ELzO1FDTQAfTH6aNBOrEvPRg1AX4U+GrjA3F5UoIEGfdnPc6WP7Jdu37539DRL4IkGoG/2X3/LVbOtpFB7AisagL47+twUtRPr0vNXAyX9dCeBKgn8N+lbgyoLYJ4koE8ADY76EKlQPQE0QAMSOG5q8PlBdcWZPwnsSWD1iC343sDliE5REkiQABok2ASmEJ3AB2FbgKsaLi5MAAAAAElFTkSuQmCC" /> </a>'
@@ -19,8 +19,8 @@ var objcontactos=[]
  imagen = imagen.replace(/\*/g,'=')
  cuerpo += '<img src="data:image/jpeg;base64,'+imagen +' alt="..."> </a>'
    cuerpo +=' <div class="media-body">'
-     cuerpo += '<h4 class="media-heading">Datos del Usuario</h4>'
-      cuerpo +=' <strong>Nombre:</strong>'+ objcontactos[0].nombre +'<br>'
+     cuerpo += '<h4 class="media-heading">'+ objcontactos[0].nombre +'</h4>'
+    
         cuerpo +=    '<strong>Filial:</strong>' + objcontactos[0].compania
          cuerpo +=   '<strong> Cargo:</strong> '+ objcontactos[0].cargo+'<br>' 
          cuerpo +=  ' <strong>Direccion:</strong> '+ objcontactos[0].direccion+'<br>'
@@ -28,8 +28,9 @@ var objcontactos=[]
         cuerpo +=    '<strong>Celular:</strong> '+ objcontactos[0].movil+'<br>'
         // cuerpo +=   '<strong>Jefe Directo:</strong> {Jefe}<br>'
       cuerpo +=  '</div></div>' 
+$('#myModal').modal({show:true})
 
-      $("#fichaUsuario").append(cuerpo);  
+      $("#fichaUsuario").prepend(cuerpo);  
                             } 
 });
 }
