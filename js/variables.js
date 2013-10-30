@@ -17,9 +17,13 @@ constantes.servicioWebdialer = 'https://10.201.123.4:8443/webdialer/Webdialer?de
 constantes.diasActualizar = 1 
 //constantes de la base de datos
  constantes.BD = {}
- constantes.version = 14
+ constantes.version = 1
  constantes.BD.Nombre = 'DirectorioKcl'
  constantes.BD.nombreTabla = 'Contactos'
  constantes.BD.indice = 'nombreApellido'
 
 var registrosActualizados = false
+
+
+
+

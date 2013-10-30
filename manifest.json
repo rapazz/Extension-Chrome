@@ -5,7 +5,7 @@
             "128": "img/gocontactsex-128.png" },
   "description": "Contactos Corporativos ",
    "background": {
-        "scripts": [
+        "scripts": ["js/chrome_ex_oauthsimple.js","js/chrome_ex_oauth.js",
             "js/funciones.js","js/variables.js","js/jquery.js","js/miDirectorio.js","js/almacen.js","background.js"
         ]},
   "browser_action": {
