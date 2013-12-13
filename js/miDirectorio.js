@@ -30,7 +30,8 @@ var objDirectorio=[]
 for (var x=0;x<objDirectorio.length;x++){
      objDirectorio[x].timeStamp= new Date().getTime()
  objDirectorio[x].nombreApellido = []
-objDirectorio[x].nombreApellido=[objDirectorio[x].nombre,objDirectorio[x].apellido]
+ if (objDirectorio[x].cargo!='')
+objDirectorio[x].nombreApellido=[remover_acentos(objDirectorio[x].nombre),remover_acentos(objDirectorio[x].apellido),remover_acentos(objDirectorio[x].nombreCompleto),objDirectorio[x].cargo]
 
 }
 
@@ -72,12 +73,12 @@ rapazz.miDirectorio.listarRegistros = function(ui)
  var tds=  '' 
         $("#tblResultados tr").remove();
 if (ui.length>0){
-tds = '<tr><td>Nombre</td><td>Organizacion</td><td>Correo</td><td>Anexo</td><td>Opciones</td></tr>'
+tds = '<tr><td>Nombre</td><td>Organizacion</td><td>Cargo</td><td>Anexo</td><td>Opciones</td></tr>'
 $("#tblResultados").append(tds); 
 }
  for (var x=0;x<ui.length;x++){ 
   console.log('acceso a listarRegistros ' + x );
-  tds =  '<tr><td><a href="#"  id="link~' + x + '">' + ui[x].person.nombreCompleto + '</a></td><td>' + ui[x].person.compania +'</td><td>' + ui[x].person.email.split('.test')[0] + '</td><td>' +ui[x].person.anexo.split('EXT.')[1] +'</td><td> <button type="submit" class="btn btn-info" id="btnllamar~'+ x + '">Llamar</button></td></tr>'
+  tds =  '<tr><td><a href="#"  id="link~' + x + '">' + ui[x].person.nombreCompleto + '</a></td><td>' + ui[x].person.compania +'</td><td>' + ui[x].person.cargo + '</td><td>' +ui[x].person.anexo.split('EXT.')[1] +'</td><td> <button type="submit" class="btn btn-info" id="btnllamar~'+ x + '">Llamar</button></td></tr>'
 $("#tblResultados").append(tds); 
 document.getElementById ('btnllamar~'+ x).miAnexo= ui[x].person.anexo.split('EXT.')[1]
 document.getElementById ('btnllamar~'+ x).addEventListener("click",  function(){

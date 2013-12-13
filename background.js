@@ -18,7 +18,7 @@ rapazz.indexedDB.open()
 
 	localStorage["versionBD"] =constantes.version
 
-	 oauth.authorize(function(){
+	
 	setTimeout(function() {
 
 rapazz.miDirectorio.obtenerInformacion()
@@ -26,19 +26,15 @@ rapazz.miDirectorio.obtenerInformacion()
 setInterval( function () {
 rapazz.miDirectorio.obtenerInformacion()},360000)
 
-	},70000)})
-
+	},70000)
 }
 else 
-
-oauth.authorize(function(){
+{
 	rapazz.miDirectorio.obtenerInformacion()
-
 setInterval( function () {
 	
 rapazz.miDirectorio.obtenerInformacion()},360000)
- })
-
+}
 
 
 

@@ -17,6 +17,7 @@ var objcontactos=[]
  var imagen = objcontactos[0].foto.replace(/\_/g,'/')
  imagen = imagen.replace(/\-/g,'+')
  imagen = imagen.replace(/\*/g,'=')
+  $("#fichaUsuario").empty()
  cuerpo += '<img src="data:image/jpeg;base64,'+imagen +' alt="..."> </a>'
    cuerpo +=' <div class="media-body">'
      cuerpo += '<h4 class="media-heading">'+ objcontactos[0].nombre +'</h4>'
@@ -34,6 +35,7 @@ $('#myModal').modal({show:true})
                             } 
 });
 }
+
 
 
 
@@ -113,3 +115,15 @@ var dd = dateObj.getDate();
   return dateStr
   
 }
+
+function remover_acentos(str) {
+for (var i=0;i<str.length;i++){ 
+//Sustituye "á é í ó ú" 
+if (str.charAt(i)=="á") str = str.replace(/á/,"a"); 
+if (str.charAt(i)=="é") str = str.replace(/é/,"e"); 
+if (str.charAt(i)=="í") str = str.replace(/í/,"i"); 
+if (str.charAt(i)=="ó") str = str.replace(/ó/,"o"); 
+if (str.charAt(i)=="ú") str = str.replace(/ú/,"u"); 
+} 
+return str; 
+} 
