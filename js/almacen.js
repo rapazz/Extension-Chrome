@@ -89,7 +89,7 @@ var i=0;
 rapazz.indexedDB.addSiguiente= function(store,i,json){
 
  if (i < json.length){
-console.log("Registro Insertado: ", i);
+//console.log("Registro Insertado: ", i);
 ++i;
 request = store.put(json[i-1])
 request.onsuccess=rapazz.indexedDB.addSiguiente(store,i,json)
@@ -151,7 +151,6 @@ return true
 
 rapazz.indexedDB.autoCompletar =  function(request, response) {
 
-      console.log("Buscando "+request.term);
 
     var v =  constantes.version ;
   var req = indexedDB.open( constantes.BD.Nombre,v);  //de manera asincrona
@@ -173,7 +172,7 @@ rapazz.indexedDB.autoCompletar =  function(request, response) {
       var range = IDBKeyRange.bound(request.term.toUpperCase(), request.term.toUpperCase() + "z");
       //var index = objectStore.index(constantes.BD.indice);
 var index = objectStore.index(constantes.BD.indice);
-
+ 
       index.openCursor(range).onsuccess = function(event) {
         var cursor = event.target.result;
         if(cursor) {

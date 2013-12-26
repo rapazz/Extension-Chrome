@@ -11,7 +11,7 @@
   <style type="text/css">
     body {
        height: 400px;
-    }
+    font-size:12px;}
 </style>
    <body>
           <script src="js/variables.js"></script>
@@ -30,7 +30,7 @@
     </header>
         <div class="input-append">
 
-  <input type="text" class="input-xxlarge" name="txtBuscar" id='txtBuscar' placeholder="buscar por nombre...">
+  <input type="text" class="input-xxlarge" name="txtBuscar" id='txtBuscar' placeholder="Buscar por nombre o Cargo .....">
   <button type="submit" class="btn btn-primary" id="btnBuscar">Buscar</button>
 </div>
 
@@ -39,7 +39,7 @@
       <div class="modal-content" >
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Ficha Usuario</h4>
+          <h3><span id="nombreusuario"> </span></h3>
         </div>
         <div class="modal-body" id="fichaUsuario">
         </div>
@@ -67,7 +67,7 @@
    
     <div id="main-content">
     
-         <div class="table-responsive">
+         <div class="table table-condensed">
          <table class="table table-bordered" id="tblResultados">
 
 </table>
